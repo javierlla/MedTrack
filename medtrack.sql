@@ -49,9 +49,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `medtrack`.`room`
+-- Table `medtrack`.`rooms`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medtrack`.`room` (
+CREATE TABLE IF NOT EXISTS `medtrack`.`rooms` (
   `room_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `doctor_id` INT UNSIGNED NOT NULL,
@@ -80,16 +80,16 @@ CREATE TABLE IF NOT EXISTS `medtrack`.`doctors` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_doctors_room1`
     FOREIGN KEY (`room_id`)
-    REFERENCES `medtrack`.`room` (`room_id`)
+    REFERENCES `medtrack`.`rooms` (`room_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `medtrack`.`appointment`
+-- Table `medtrack`.`appointments`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medtrack`.`appointment` (
+CREATE TABLE IF NOT EXISTS `medtrack`.`appointments` (
   `appointment_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `date` DATETIME NOT NULL,
   `patient_id` INT UNSIGNED NOT NULL,
@@ -122,16 +122,16 @@ CREATE TABLE IF NOT EXISTS `medtrack`.`prescriptions` (
   INDEX `fk_prescriptions_appointment1_idx` (`appointment_id` ASC) VISIBLE,
   CONSTRAINT `fk_prescriptions_appointment1`
     FOREIGN KEY (`appointment_id`)
-    REFERENCES `medtrack`.`appointment` (`appointment_id`)
+    REFERENCES `medtrack`.`appointments` (`appointment_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `medtrack`.`medication`
+-- Table `medtrack`.`medications`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medtrack`.`medication` (
+CREATE TABLE IF NOT EXISTS `medtrack`.`medications` (
   `medication_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`medication_id`),
@@ -140,9 +140,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `medtrack`.`medication_prescriptions`
+-- Table `medtrack`.`medications_prescriptions`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `medtrack`.`medication_prescriptions` (
+CREATE TABLE IF NOT EXISTS `medtrack`.`medications_prescriptions` (
   `medication_id` INT UNSIGNED NOT NULL,
   `prescription_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`medication_id`, `prescription_id`),
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `medtrack`.`medication_prescriptions` (
   INDEX `fk_medication_has_prescriptions_medication1_idx` (`medication_id` ASC) VISIBLE,
   CONSTRAINT `fk_medication_has_prescriptions_medication1`
     FOREIGN KEY (`medication_id`)
-    REFERENCES `medtrack`.`medication` (`medication_id`)
+    REFERENCES `medtrack`.`medications` (`medication_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_medication_has_prescriptions_prescriptions1`
