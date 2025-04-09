@@ -3,14 +3,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const sequelize = new Sequelize(
+const connection = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASSWORD,
     {
         host: process.env.DB_HOST,
         dialect: process.env.DB_DIALECT,
-        port: process.env.DB_PORT,
+        port: 3306,
         define: {
             timestamps: false,
             freezeTableName: true
@@ -19,7 +19,7 @@ const sequelize = new Sequelize(
 );
 
 // Probar la conexión
-sequelize.authenticate()
+connection.authenticate()
     .then(() => console.log('Conexión a la base de datos establecida'))
     .catch(err => console.error('Error al conectar a la base de datos:', err));
 

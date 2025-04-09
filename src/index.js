@@ -8,7 +8,7 @@ dotenv.config();
 
 // Crear servidor Express
 const app = express();
-const PORT = process.env.PORT || 3000;
+const APP_PORT = process.env.PORT || 3000;
 
 // Configurar middleware
 /* app.use(cors()); */
@@ -35,6 +35,6 @@ app.use(session({
 app.use('/', router);
 
 // Iniciar servidor
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
+app.listen(3000, () => {
+    console.log(`Servidor escuchando en http://localhost:${APP_PORT}`);
 });
