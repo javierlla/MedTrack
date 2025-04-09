@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import session from 'express-session';
-import router from './routes/index.js';
+/* import router from './routes/index.js'; */
 
 // Cargar variables de entorno
 dotenv.config();
@@ -22,7 +22,7 @@ app.set('views', 'src/views');
 
 // Configurar sesión
 app.use(session({
-    secret: process.env.SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: { 
@@ -32,7 +32,7 @@ app.use(session({
 }));
 
 // Configurar rutas
-app.use('/', router);
+/* app.use('/', router); */
 
 // Iniciar servidor
 app.listen(3000, () => {

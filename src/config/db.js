@@ -10,7 +10,7 @@ const connection = new Sequelize(
     {
         host: process.env.DB_HOST,
         dialect: process.env.DB_DIALECT,
-        port: 3306,
+        port: process.env.DB_PORT,
         define: {
             timestamps: false,
             freezeTableName: true
@@ -23,4 +23,4 @@ connection.authenticate()
     .then(() => console.log('Conexión a la base de datos establecida'))
     .catch(err => console.error('Error al conectar a la base de datos:', err));
 
-export default sequelize;
+export default connection;
