@@ -1,5 +1,8 @@
 import { DataTypes } from "sequelize";
 import connection from "../config/db.js";
+import User from "./users.js"
+import Appointment from "./appointments.js"
+import Room from "./rooms.js"
 
 const Doctor = connection.define("doctors",{
     user_id: {
