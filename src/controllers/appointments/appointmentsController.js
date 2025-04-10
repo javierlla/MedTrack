@@ -1,44 +1,53 @@
 import Appointment from '../../models/appointments.js';
 import {  } from "../../utils/errors.js";
 
-
+//FUNCTION TO GET ENTIRE LIST
 async function getAll(){
-
     const appointments = await Appointment.findAll();
-   
     return appointments;
-
 }
-  
+
+//FUNCTION TO GET APPOINTMENT BY ID
 async function getByID(id){
-
     const appointments = await Appointment.findByPk(id);
-
     return appointments;
-
 }
 
-async function edit(id, data){ // suponemos que los datos que vamos a pasar a la función estan en el formato correcto
+//FUNCTION TO CREATE AN APPOINTMENT
+async function create(data){
+    const result = await Appointment.create(
+        data,
+        {
+            where:{
+                appointment_id: id
+            }
+        }
+    );
+    return result;
+}
 
-    if (data.name){
-        
-    }
-
+//FUNCTION TO EDIT AN APPOINTMENT
+async function edit(id, data){
     const result = await Appointment.update(
         data,
         {
             where:{
-                user_id: id
+                appointment_id: id
             }
         }
     );
-
     return result;
+}
 
+//FUNCTION TO REMOVE AN APPOINTMENT
+async function remove(id){
+    const result = await Appointment.findByPk(id);
+    result.destroy();
 }
 
 export default{
     getAll,
     getByID,
-    edit
+    edit,
+    remove
 }
