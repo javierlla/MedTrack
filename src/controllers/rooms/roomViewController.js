@@ -1,14 +1,14 @@
-import doctorController from './doctorsController.js';
+import roomController from './roomController.js';
 
 
 async function getAll(req,res){
 
     try{
 
-        const doctors = await doctorController.getAll();
-        const role = req.ssesion.user?.role;
+        const rooms = await roomController.getAll();
+        const role = req.session.user?.role;
     
-        res.render("doctor/list",{doctors, role});
+        res.render("room/list",{rooms, role});
 
     }catch (error) {
 
@@ -24,13 +24,13 @@ async function getByID(req,res){
     try {
 
         const id = req.params.id;
-        const doctor = await doctorController.getByID(id);
+        const room = await roomController.getByID(id);
 
-        if(!doctor){
-            res.render("layout", {error: "There is no doctor for that ID"});
+        if(!room){
+           return res.render("layout", {error: "There is no room for that ID"});
         }
 
-        res.render("doctor/show",{doctor}); // la ruta de render es a partir de la carpeta views, no la del router
+        res.render("room/show",{room}); // la ruta de render es a partir de la carpeta views, no la del router
         
     } catch (error) {
 
@@ -46,13 +46,13 @@ async function editForm(req, res){
     try {
 
         const id = req.params.id;
-        const doctor = await doctorController.getByID(id);
+        const room = await roomController.getByID(id);
 
-        if (!doctor) {
-            res.redirect("/doctor")
+        if (!room) {
+           return res.redirect("/room")
         }
 
-        res.render("doctor/edit", {doctor});
+        res.render("room/edit", {room});
         
     } catch (error) {
 
@@ -69,13 +69,13 @@ async function edit(req, res){
 
     try {
 
-        const result = await doctorController.edit(id, req.body);
+        const result = await roomController.edit(id, req.body);
 
-        res.redirect("/doctor/" + id);
+        res.redirect("/room/" + id);
         
     } catch (error) {
         if (error.statusCode){
-            res.redirect(`/doctor/${id}/edit?error=` + error.mesage);
+            res.redirect(`/room/${id}/edit?error=` + error.message);
         }else{
             res.render("layout", {error: "Internal Server Error"});
         }
