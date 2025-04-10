@@ -37,6 +37,7 @@ async function getByID(req,res){
         console.error(error);
 
         res.render("layout", {error: "Internal Server Error"}); // vamos a la vista de layout y le mostramos el error
+
     }
 
 }
@@ -46,13 +47,14 @@ async function editForm(req, res){
     try {
 
         const id = req.params.id;
+        const error = req.query.error;
         const doctor = await doctorController.getByID(id);
 
         if (!doctor) {
             res.redirect("/doctor")
         }
 
-        res.render("doctor/edit", {doctor});
+        res.render("doctor/edit", {doctor, error});
         
     } catch (error) {
 
