@@ -13,7 +13,7 @@ function registerForm(req,res){
 }
 
 async function register(req,res){
-    const {name,email,password,role} = req.body;
+    const {name,email,password} = req.body;
     const oldUser = await User.findOne({
         where:{
             email: email
@@ -25,12 +25,9 @@ async function register(req,res){
     }
     const hashedPassword = await hash(password)
     const result = await User.create({name,email,password:hashedPassword});
-    if (role === "patient") {
-        await Patient.create({ user_id: result.user_id});
-    }
-    else if (role === "doctor") {
-        await Doctor.create({ user_id: result.user_id});
-    }
+    
+    Patient.create({ user_id: result.user_id});
+
     res.redirect("/login?message=Registered+successfully");
 }
 async function login(req,res)

@@ -26,7 +26,7 @@ async function edit (req,res){
         const id = req.params.id;
         const result = await patientController.edit(id,req.body);
         res.json(result);
-    }catch(error);{
+    }catch(error){
         console.error(error);
         if (error.statusCode){
             res.status(error.statusCode).json({error: error.message});
@@ -36,8 +36,28 @@ async function edit (req,res){
     }
 }
 
+async function create(req,res){
+    try{    
+
+        const response = await patientController.create(req.body)
+        res.json(response);
+
+    }catch (error){
+        console.error(error);
+        if (error.statusCode){
+            res.status(error.statusCode).json({error: error.message});
+            
+        }else {
+            res.status(500).json({error: "Server error"})
+        }
+    }
+}
+
+
+
 export default{
     getAll,
     getByID,
-    edit
+    edit,
+    create
 };
