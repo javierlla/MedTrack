@@ -5,17 +5,7 @@ import Appointment from "./appointments.js"
 import Room from "./rooms.js"
 
 const Doctor = connection.define("doctors",{
-    user_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        allowNull: false,
-        primaryKey: true
-    },
-
-    room_id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        allowNull: false
-    },
-
+    
     name: {
         type: DataTypes.STRING(45),
         allowNull: false
@@ -33,6 +23,17 @@ const Doctor = connection.define("doctors",{
 
     telephone: {
         type: DataTypes.STRING(45),
+        allowNull: false
+    },
+
+    user_id: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        allowNull: false,
+        primaryKey: true
+    },
+
+    room_id: {
+        type: DataTypes.INTEGER.UNSIGNED,
         allowNull: false
     }
 })
