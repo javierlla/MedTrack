@@ -1,4 +1,4 @@
-import Patient from "../models/patients.js";
+import Patient from "../../models/patients.js";
 
 function getAllPatients (){
 
