@@ -1,5 +1,4 @@
 import Doctor from '../../models/doctors.js';
-import {  } from "../../utils/errors.js";
 
 
 async function getAll(){
@@ -19,10 +18,6 @@ async function getByID(id){
 }
 
 async function edit(id, data){ // suponemos que los datos que vamos a pasar a la función estan en el formato correcto
-
-    if (data.name){
-        
-    }
 
     const result = await Doctor.update(
         data,
