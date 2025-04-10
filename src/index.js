@@ -32,7 +32,8 @@ app.use(session({
 }));
 
 // Configurar rutas
-//app.use('/', router);
+
+/* app.use('/', router); */
 
 // Iniciar servidor
 app.listen(3000, () => {
