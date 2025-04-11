@@ -1,14 +1,14 @@
-import doctorController from './doctorsController.js';
+import prescriptionsController from './prescriptionsController.js';
 
 
 async function getAll(req,res){
 
     try{
 
-        const doctors = await doctorController.getAll();
-        const role = req.ssesion.user?.role;
+        const prescriptions = await prescriptionsController.getAll();
+        const role = req.session.user?.role;
     
-        res.render("doctor/list",{doctors, role});
+        res.render("prescription/list",{prescriptions, role});
 
     }catch (error) {
 
@@ -24,20 +24,19 @@ async function getByID(req,res){
     try {
 
         const id = req.params.id;
-        const doctor = await doctorController.getByID(id);
+        const prescription = await prescriptionsController.getByID(id);
 
-        if(!doctor){
-            res.render("layout", {error: "There is no doctor for that ID"});
+        if(!prescription){
+           return res.render("layout", {error: "There is no prescription for that ID"});
         }
 
-        res.render("doctor/show",{doctor}); // la ruta de render es a partir de la carpeta views, no la del router
+        res.render("prescription/show",{prescription}); // la ruta de render es a partir de la carpeta views, no la del router
         
     } catch (error) {
 
         console.error(error);
 
         res.render("layout", {error: "Internal Server Error"}); // vamos a la vista de layout y le mostramos el error
-
     }
 
 }
@@ -47,14 +46,13 @@ async function editForm(req, res){
     try {
 
         const id = req.params.id;
-        const error = req.query.error;
-        const doctor = await doctorController.getByID(id);
+        const prescription = await prescriptionsController.getByID(id);
 
-        if (!doctor) {
-            res.redirect("/doctor")
+        if (!prescription) {
+           return res.redirect("/prescription")
         }
 
-        res.render("doctor/edit", {doctor, error});
+        res.render("prescription/edit", {prescription});
         
     } catch (error) {
 
@@ -71,13 +69,13 @@ async function edit(req, res){
 
     try {
 
-        const result = await doctorController.edit(id, req.body);
+        const result = await prescriptionsController.edit(id, req.body);
 
-        res.redirect("/doctor/" + id);
+        res.redirect("/prescription/" + id);
         
     } catch (error) {
         if (error.statusCode){
-            res.redirect(`/doctor/${id}/edit?error=` + error.mesage);
+            res.redirect(`/prescription/${id}/edit?error=` + error.message);
         }else{
             res.render("layout", {error: "Internal Server Error"});
         }
