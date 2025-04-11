@@ -1,0 +1,12 @@
+article 
+    h2(class="appointment-card")= appointment.id
+    
+    p(class="appointment-card__date")=appointment.date
+    p(class="appointment-card__patient")= appointment.patientName
+    p(class="appointment-card__doctor")= appointment.doctorName
+    p(class="appointment-card__room")= appointment.room
+    
+    a(href=`/apppointment/${appointment.id}/edit`)
+        button Edit
+    form(action=`/appointment/${appointment.id}/delete`, method="post") 
+        button Delete
