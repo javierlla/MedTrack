@@ -2,21 +2,15 @@ import appointmentsController from './appointmentsController.js';
 
 
 async function getAll(req,res){
-
     try{
-
-        const appointments = await appointmentsController.getAll();
-        const role = req.ssesion.user?.role;
-    
+        const role = req.session.user?.role;
+        const id = req.session.user?.user_id;
+        const appointments = await appointmentsController.getAll(id,role);
         res.render("appointment/list",{appointments, role});
-
     }catch (error) {
-
         console.error(error);
-
         res.render("layout", {error: "Internal Server Error"}); // vamos a la vista de layout y le mostramos el error
-    }
-    
+    } 
 }
   
 async function getByID(req,res){

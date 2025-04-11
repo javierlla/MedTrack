@@ -1,0 +1,20 @@
+extends ../layout
+block content 
+    h1 Edit Stand 
+    form(action=`/stand/${stand.stand_id}`, method="post") 
+        label(for="name") Name 
+        input#name(type="text", name="name" value=stand.name)
+        //-input(id="name", type="text", name="name")
+        label(for="size") Size
+        select#size(name="size" ) 
+            option(value="small" selected=stand.size==="small") Small
+            option(value="medium" selected=stand.size==="medium") Medium 
+            option(value="large" selected=stand.size==="large") Large 
+        label(for="creation_date") Creation date 
+        input(id="creation_date" type="date" name="creation_date" value=stand.creation_date)
+        label(for="stand_category_id") Category 
+        select#stand_category_id(name="stand_category_id") 
+            each category in categories 
+                option(value=category.stand_category_id 
+                selected=(stand.stand_category_id===category.stand_category_id))= category.name
+        button Submit

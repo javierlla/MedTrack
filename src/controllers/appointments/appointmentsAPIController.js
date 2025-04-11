@@ -1,20 +1,13 @@
 import appointmentsController from './appointmentsController.js';
 
 async function getAll(req,res){
-    
     try {
-
         const appointments = await appointmentsController.getAll();
-
         res.json(appointments);
-        
     } catch (error) {
-
         console.error(error);
-
         res.status(500).json({error: "Server Error"}); // Si falla la base de datos se detectará y se manada el mensaje
     }
-    
 }
   
 async function getByID(req,res){
