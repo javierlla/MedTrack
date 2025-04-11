@@ -1,4 +1,4 @@
-import User from "../models/user.js";
+import User from "../../models/users.js";
 import Doctor from "../../models/doctors.js";
 import Patient from "../../models/patients.js";
 import { hash, compare } from "../../utils/bcrypt.js";
