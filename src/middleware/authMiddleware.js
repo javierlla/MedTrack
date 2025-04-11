@@ -1,40 +1,69 @@
+import { verifyToken } from "../utils/token.js";
 
-function isLoggedInSession(req,res,next){
-    const user  = req.session.user;
-    if(!user){
-        return res.redirect("/login?error=You+are+not+logged+in")
-        //return res.json({error:"not logged in"});
+// Middleware para sesiones (vistas)
+function isLoggedInSession(req, res, next) {
+    const user = req.session.user;
+    if (!user) {
+        return res.redirect("/login?error=You+are+not+logged+in");
     }
-    // lo ideal sería comprobar en base de datos que el usuario existe
+    // Opcional: comprobar si el usuario aún existe en base de datos
     next();
 }
 
- async function isPatient(req,res,next){
-    const user  = req.session.user;
-    if(!user){
-        return res.redirect("/login?error=You+are+not+logged+in")
+// Middleware para APIs (token JWT)
+function isLoggedInAPI(req, res, next) {
+    const authorization = req.headers.authorization;
+
+    if (!authorization) {
+        return res.status(401).json({ error: "You shall not pass" });
     }
-    if(user.role ==="patient"){
+
+    const parts = authorization.split(" ");
+    const token = parts.length === 2 ? parts[1] : null;
+
+    if (!token) {
+        return res.status(401).json({ error: "Invalid authorization header format" });
+    }
+
+    const result = verifyToken(token);
+    if (result) {
+        req.user = {
+            user_id: result.user_id,
+            role: result.role
+        };
         next();
-    }else{
-        return res.redirect("/login?error=You+are+not+a+patient")
+    } else {
+        return res.status(401).json({ error: "Invalid or expired token" });
     }
 }
 
-async function isDoctor(req,res,next){
-    const user  = req.session.user;
-    if(!user){
-        return res.redirect("/login?error=You+are+not+logged+in")
+// Middleware específico para role = patient
+function isPatient(req, res, next) {
+    const user = req.session.user;
+    if (!user) {
+        return res.redirect("/login?error=You+are+not+logged+in");
     }
-    if(user.role ==="doctor"){
-        next();
-    }else{
-        return res.redirect("/login?error=You+are+not+a+doctor")
+    if (user.role === "patient") {
+        return next();
     }
-} 
+    return res.redirect("/login?error=You+are+not+a+patient");
+}
+
+// Middleware específico para role = doctor
+function isDoctor(req, res, next) {
+    const user = req.session.user;
+    if (!user) {
+        return res.redirect("/login?error=You+are+not+logged+in");
+    }
+    if (user.role === "doctor") {
+        return next();
+    }
+    return res.redirect("/login?error=You+are+not+a+doctor");
+}
 
 export {
     isLoggedInSession,
+    isLoggedInAPI,
     isPatient,
     isDoctor
-}
+};
