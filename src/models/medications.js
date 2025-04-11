@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import connection from "../config/sequelize.js";
+import connection from "../config/db.js";
 import Prescription from "./prescriptions.js"
 
 const Medication = connection.define("medications",{
@@ -11,7 +11,7 @@ const Medication = connection.define("medications",{
         unique: true
     },
     name: {
-        type: DataTypes.VARCHAR(45),
+        type: DataTypes.STRING(45),
         allowNull: false
     },
 })

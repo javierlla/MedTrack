@@ -62,7 +62,7 @@ class UserEmailAlreadyExists extends Error{
     }
 }
 
-class UserInvalidCredencials extends Error{
+class UserInvalidCredentials extends Error{
     constructor(){
         super("Invalid credencials");
         this.statusCode = 401;
@@ -79,5 +79,5 @@ export {
     UserPasswordNotProvided,
     UserRoleIncorrect,
     UserEmailAlreadyExists,
-    UserInvalidCredencials
+    UserInvalidCredentials
 }
