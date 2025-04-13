@@ -1,18 +1,18 @@
 import {Router} from "express";
-import medicationsAPIController from "../../controllers/medications/medicationsAPIController";
+import medicationsViewController from "../../controllers/medications/medicationsViewController";
 
 
 const router = Router();
 
 // conseguir todas las medicaciones
-router.get("/",medicationsAPIController.getAll)
+router.get("/",medicationsViewController.getAll)
 
 // conseguir medicaciones por id
-router.get("/:id",medicationsAPIController.getByID)
+router.get("/:id",medicationsViewController.getByID)
 
 // modificar una medicacion
-router.get("/:id/edit",medicationsAPIController.editForm)
-router.post("/:id",medicationsAPIController.edit)
+router.get("/:id/edit",medicationsViewController.editForm)
+router.post("/:id",medicationsViewController.edit)
 
 
 export default router;

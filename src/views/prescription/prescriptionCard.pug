@@ -1,0 +1,22 @@
+article 
+    h2(class="prescription-card")= prescription.prescription_id
+    
+    p(class="prescription-card__date")=prescription.Appointment.date
+    p(class="prescription-card__patient")= Name: prescription.Patient.name Surname: prescription.Patient.surename
+    p(class="prescription-card__doctor")= Doctor: prescription.Doctor.name prescription.Doctor.surename
+    p(class="prescription-card__doctor-spaciallity")= prescription.Doctor.speciallity
+
+    if prescription.medications 
+        h3 Medications
+        section(class="prescription-medications")
+            each medication in prescription.medications 
+                article(class="prescription-medication")
+                    h4= medication.name 
+
+    if role==="doctor"              
+        a(href=`/prescription/${prescription.prescription_id}/edit`)
+            button Edit
+        form(action=`/prescription/${prescription.prescription_id}/delete`, method="post") 
+            button Delete
+
+    

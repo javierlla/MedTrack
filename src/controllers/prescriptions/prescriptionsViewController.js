@@ -4,9 +4,9 @@ import prescriptionsController from './prescriptionsController.js';
 async function getAll(req,res){
 
     try{
-
-        const prescriptions = await prescriptionsController.getAll();
         const role = req.session.user?.role;
+        const id = req.session.user?.user_id;
+        const prescriptions = await prescriptionsController.getAll(id, role);
     
         res.render("prescription/list",{prescriptions, role});
 

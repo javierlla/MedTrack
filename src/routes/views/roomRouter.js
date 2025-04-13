@@ -1,5 +1,5 @@
 import {Router} from "express";
-import roomViewController from "../../controllers/roomViewController.js";
+import roomViewController from "../../controllers/rooms/roomViewController.js";
 
 
 const router = Router();

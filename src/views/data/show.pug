@@ -1,0 +1,10 @@
+extends ../layout
+
+block content 
+    if user 
+        if role==="patient"
+            include patientCard
+        if role==="doctor"
+            include doctorCard
+    else 
+        p There is no user for that id

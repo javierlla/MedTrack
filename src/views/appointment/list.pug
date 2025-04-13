@@ -1,0 +1,17 @@
+extends ../layout
+
+block content 
+
+    h1 Appointments 
+    
+    if role==="patient"
+        a(href="/appointment/create") New Appointment
+
+    section(class="appointment-list")
+        if appointments
+            each appointment in appointments
+                a(href=`/appointment/${appointment.appointment_id}`)
+                    include appointmentCard
+        else 
+            p There is no appointment available
+        

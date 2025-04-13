@@ -11,7 +11,6 @@ router.get("/",roomAPIController.getAll)
 router.get("/:id",roomAPIController.getByID)
 
 // modificar un doctor
-router.get("/:id/edit",roomAPIController.editForm)
 router.post("/:id",roomAPIController.edit)
 
 
