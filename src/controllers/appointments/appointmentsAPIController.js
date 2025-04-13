@@ -2,7 +2,9 @@ import appointmentsController from './appointmentsController.js';
 
 async function getAll(req,res){
     try {
-        const appointments = await appointmentsController.getAll();
+        const role = req.session.user?.role;
+        const id = req.session.user?.user_id;
+        const appointments = await appointmentsController.getAll(id, role);
         res.json(appointments);
     } catch (error) {
         console.error(error);

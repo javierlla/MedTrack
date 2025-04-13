@@ -57,5 +57,6 @@ export default{
     getAll,
     getByID,
     edit,
+    create,
     remove
 }

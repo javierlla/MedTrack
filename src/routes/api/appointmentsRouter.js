@@ -11,7 +11,6 @@ router.get("/",appointmentsAPIController.getAll());
 router.get("/:id",appointmentsAPIController.getByID());
 
 // modificar una cita
-router.get("/:id/edit",appointmentsAPIController.editForm)
 router.post("/:id",appointmentsAPIController.edit)
 
 
