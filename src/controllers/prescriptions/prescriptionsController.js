@@ -1,11 +1,13 @@
 import Prescription from "../../models/prescriptions.js";
 import Doctor from '../../models/doctors.js';
 import Patient from '../../models/patients.js';
+import Medication from '../../models/medications.js';
+import Appointment from '../../models/appointments.js';
 import {  } from "../../utils/errors.js";
 
 //FUNCTION TO GET ENTIRE LIST
 async function getAll(id=null,role=null){
-    const filter = {include: [Patient,Doctor]};
+    const filter = {include: [Patient,Doctor,Appointment,Medication]};
     if(role==="patient"){
         filter.where = {patient_id: id};
     }else if (role==="doctor"){

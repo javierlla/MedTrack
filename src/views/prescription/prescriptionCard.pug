@@ -2,8 +2,8 @@ article
     h2(class="prescription-card")= prescription.prescription_id
     
     p(class="prescription-card__date")=prescription.Appointment.date
-    p(class="prescription-card__patient")= prescription.Patient.name
-    p(class="prescription-card__doctor")= prescription.Doctor.name
+    p(class="prescription-card__patient")= Name: prescription.Patient.name Surname: prescription.Patient.surename
+    p(class="prescription-card__doctor")= Doctor: prescription.Doctor.name prescription.Doctor.surename
     p(class="prescription-card__doctor-spaciallity")= prescription.Doctor.speciallity
 
     if prescription.medications 
