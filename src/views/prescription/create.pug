@@ -1,10 +1,8 @@
 extends ../layout
 block content 
-    h1 New Stand 
-    form(action="/stand", method="post") 
-        label(for="name") Name 
-        input#name(type="text", name="name")
-        //-input(id="name", type="text", name="name")
+    h1 New Prescription
+    form(action="/prescription", method="post") 
+        
         label(for="size") Size
         select#size(name="size") 
             option(value="small") Small

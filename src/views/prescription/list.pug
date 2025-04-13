@@ -1,0 +1,16 @@
+extends ../layout
+
+block content 
+    h1 Prescriptions 
+    
+    if role==="doctor"
+        a(href="/prescription/create") New Prescription
+
+    section(class="prescription-list")
+        if prescriptions
+            each prescription in prescriptions
+                a(href=`/prescription/${prescription.prescription_id}`)
+                    include prescriptiontCard
+        else 
+            p There is no prescription available
+        

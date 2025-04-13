@@ -1,0 +1,7 @@
+extends ../layout
+
+block content 
+    if prescription 
+        include prescriptionCard
+    else 
+        p There is no prescription for that id
