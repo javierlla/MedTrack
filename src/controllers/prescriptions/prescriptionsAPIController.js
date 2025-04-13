@@ -1,13 +1,20 @@
-import appointmentsController from './appointmentsController.js';
+import prescriptionsController from './prescriptionsController.js';
 
 async function getAll(req,res){
+    
     try {
-        const appointments = await appointmentsController.getAll();
-        res.json(appointments);
+
+        const prescriptions = await prescriptionsController.getAll();
+
+        res.json(prescriptions);
+        
     } catch (error) {
+
         console.error(error);
+
         res.status(500).json({error: "Server Error"}); // Si falla la base de datos se detectará y se manada el mensaje
     }
+    
 }
   
 async function getByID(req,res){
@@ -16,9 +23,9 @@ async function getByID(req,res){
 
         const id = req.params.id;
 
-        const appointments = await appointmentsController.getByID(id);
+        const prescription = await prescriptionsController.getByID(id);
 
-        res.json(appointments);
+        res.json(prescription);
 
     } catch (error) {
 
@@ -35,7 +42,7 @@ async function edit(req, res){
 
         const id = req.params.id;
 
-        const result = await appointmentsController.edit(id, req.body);
+        const result = await prescriptionsController.edit(id, req.body);
 
         res.json(result);
         

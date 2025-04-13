@@ -11,7 +11,6 @@ router.get("/",doctorAPIController.getAll)
 router.get("/:id",doctorAPIController.getByID)
 
 // modificar un doctor
-router.get("/:id/edit",doctorAPIController.editForm)
 router.post("/:id",doctorAPIController.edit)
 
 

@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import connection from "../config/sequelize.js";
+import connection from "../config/db.js";
 
 const Patient = connection.define("patients",{
     name: {
@@ -11,7 +11,7 @@ const Patient = connection.define("patients",{
         allowNull: false
     },
     birthdate: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.DATE,
         allowNull: false
     },
     ssn: {
@@ -19,7 +19,7 @@ const Patient = connection.define("patients",{
         allowNull: false
     },
     telephone: {
-        type: DataTypes.VARCHAR(45),
+        type: DataTypes.STRING(45),
         allowNull: false
     },
     user_id: {
@@ -29,10 +29,5 @@ const Patient = connection.define("patients",{
     }
 })
 
-Patient.belongsTo(User,{foreignKey:"user_id"});
-User.hasOne(Patient,{foreignKey:"user_id"});
-
-Patient.hasMany(Appointment,{foreignKey:"user_id"});
-Appointment.belongsTo(Patient);
 
 export default Patient;

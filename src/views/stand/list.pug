@@ -1,0 +1,15 @@
+extends ../layout
+
+block content 
+    h1 Stands 
+    if role==="seller"
+        a(href="/stand/new") New Stand
+    section(class="stand-list")
+        if stands
+            each stand in stands 
+                a(href=`/stand/${stand.stand_id}`)
+                    include standCard
+                    p= stand.stand_category.name
+        else 
+            p There is no stand available
+        

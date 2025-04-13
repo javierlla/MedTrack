@@ -18,7 +18,7 @@ async function getAll(req,res){
     }
     
 }
-  
+
 async function getByID(req,res){
 
     try {
