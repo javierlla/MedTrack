@@ -1,10 +1,10 @@
 article 
     h2(class="doctor-card")= doctor.doctor_id
     
-    p(class="doctor-card__name")= doctor.name
-    p(class="doctor-card__surname")= doctor.surname
-    p(class="doctor-card__speciallity")= doctor.speciallity
-    p(class="doctor-card__telephone")= doctor.telephone
+    p(class="doctor-card__name")="Name: " + doctor.name
+    p(class="doctor-card__surname")="Surname: " + doctor.surname
+    p(class="doctor-card__speciallity")="Speciality: " + doctor.speciality
+    p(class="doctor-card__telephone")="Phone number: " + doctor.telephone
     
     a(href=`/data/edit`)
         button Edit
