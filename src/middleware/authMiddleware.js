@@ -67,7 +67,7 @@ function isAuthenticated(req, res, next) {
         next();
     } else {
         // No está logueado, redirigimos a login
-        res.redirect('/login?error=Necesitas+iniciar+sesión');
+        res.redirect('/login?error=You+need+to+log+in+first');
     }
 }
 

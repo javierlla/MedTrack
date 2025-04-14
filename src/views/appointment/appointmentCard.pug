@@ -4,9 +4,9 @@ article
     p(class="appointment-card__date")=appointment.date
     p(class="appointment-card__patient")="Nombre: " + appointment.patient.name + " " + appointment.patient.surname
     p(class="appointment-card__doctor")= "Doctor: " + appointment.doctor.name + " " + appointment.doctor.surname
-    p(class="appointment-card__doctor-speciality")= "Speciality: " + appointment.doctor.spaciality
+    p(class="appointment-card__doctor-speciality")= "Speciality: " + appointment.doctor.speciality
     
     a(href=`/apppointment/${appointment.appointment_id}/edit`)
-        button Edit
+        button.button Edit
     form(action=`/appointment/${appointment.appointment_id}/delete`, method="post") 
-        button Delete
+        button.button Delete
