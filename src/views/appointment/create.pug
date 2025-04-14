@@ -2,29 +2,29 @@ extends ../layout
 
 block content 
 
+    if appointments
+        p Citas ya cogidas
+            ul
+                each appointment in appointments
+                    li= appointment
+    
     h1 New Appointment 
 
-    form(action="/appointment", method="post") 
+    form(action="/appointments/availables", method="get") 
         
+        label(for="speciallity") speciallity
+        select#speciality(name="speciality")
+            option(value="pediatry") Pediatry
+            option(value="CardiologÃ­a") Cardiology
+
         label(for="day") Day
+        input#day(type="date", name="day")
 
-        select#day(name="day") 
-            option(value="Mon.") Mon.
-            option(value="Tues.") Tues. 
-            option(value="Wedn.") Wedn.
-            option(value="Thurs.") Thurs.
-            option(value="Fri.") Fri.
-        
         label(for="hour") Hour
-
-        select#hour(name="hour") 
+        select#hour(name="hour")
             option(value="8:00") 8:00
             option(value="9:00") 9:00
             option(value="10:00") 10:00
             option(value="11:00") 11:00
-        
-        label(for="speciallity") speciallity
-        
-        select#spaciallity(name="speciallity")
 
-        button Submit
+        button Choose
