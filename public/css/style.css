@@ -1,5 +1,6 @@
 :root{
     font-size: 1.7rem;
+    color-scheme: light dark;
 }
 
 ul li{
@@ -12,16 +13,6 @@ ul {
     justify-content: space-around;
 }
 
-
-/* ul li a{
-    display: flex;
-    border-radius: 10px;
-    border: 1px solid rebeccapurple;
-    background-color: #45a049;
-    padding: 20px;
-    min-height: 50%;
-
-}  */
 
 ul li a {
     display: flex;
@@ -91,6 +82,16 @@ nav ul li a{
 
 }
 
+.navBar li a{
+    background-color: rgb(70, 70, 70);
+    transition: .5s ease-in-out ;
+}
+
+.navBar li a:hover{
+    transition: .5s ease-in-out ;
+    transform: scale(1.2);
+}
+
 body {
     background-color: rgb(37, 31, 31);
     min-height: 100vh;          
@@ -154,7 +155,7 @@ article a button:hover {
 
 footer, header nav ul li a{
     color: rgb(235, 183, 88);
-    background-color: rgb(22, 24, 19);
+    /* background-color: rgb(22, 24, 19); */
     padding: 10px;
     text-align: center;         
     width: 100%;               
@@ -188,3 +189,126 @@ ul li p{
  
 
  
+
+/* form, login */
+.register-form{
+    max-width: 600px;
+    margin: 0 auto; /* Centrar el formulario */
+    padding: 20px;
+    background-color: #222; /* Fondo oscuro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 15px; /* Espaciado entre los elementos */
+    min-width: 50%;
+}
+
+.register-form label {
+    grid-column: span 1; /* Cada etiqueta ocupa una columna */
+    color: #ebc556; /* Color del texto */
+    font-weight: bold;
+}
+
+.register-form input {
+    grid-column: span 1; /* Cada campo ocupa una columna */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto claro */
+}
+
+.register-form input:focus {
+    border-color: #ebc556; /* Color del borde al enfocar */
+    outline: none;
+}
+
+.register-form button {
+    grid-column: span 2;
+    padding: 10px;
+    background-color: #ebc556;
+    color: #222; 
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-form button:hover {
+    background-color: #d4a945;
+}
+
+/* Estilos mejorados para el formulario de inicio de sesión */
+.login {
+    max-width: 400px; /* Ajustar el ancho del formulario */
+    margin: 50px auto; /* Centrar el formulario horizontal y agregar espacio superior */
+    padding: 30px;
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a); /* Fondo con degradado */
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    display: grid;
+    grid-template-columns: 1fr; /* Una sola columna */
+    gap: 20px; /* Espaciado entre los elementos */
+}
+
+.login label {
+    color: #ebc556; /* Color del texto */
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.login input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444; /* Borde más oscuro */
+    border-radius: 8px;
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto claro */
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login input:focus {
+    border-color: #ebc556; /* Color del borde al enfocar */
+    box-shadow: 0 0 8px rgba(235, 197, 86, 0.8); /* Efecto de brillo */
+    outline: none;
+}
+
+.login button {
+    padding: 12px;
+    background: linear-gradient(145deg, #ebc556, #d4a945); /* Fondo con degradado */
+    color: #222; 
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.login button:hover {
+    background-color: #c9a03f; /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de zoom */
+}
+
+.login button:active {
+    transform: scale(0.95); /* Efecto de clic */
+}
+
+.login .error {
+    color: #ff6b6b; /* Color rojo para errores */
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -10px;
+}
+
+.login .message {
+    color: #4caf50; /* Color verde para mensajes */
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -10px;
+}
