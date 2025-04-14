@@ -98,7 +98,8 @@ body {
     min-height: 100vh;          
     margin: 0;            
     display: flex;        
-    flex-direction: column;     
+    flex-direction: column;
+    text-align: center;     
 }
 
 
@@ -137,7 +138,7 @@ article {
 }
 
 
-article a button {
+.button, article a button {
     background-color: #4CAF50; 
     color: white;
     border: none;
@@ -147,6 +148,7 @@ article a button {
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s;
+    min-width: 300px;
 }
 
 article a button:hover {
@@ -312,4 +314,11 @@ ul li p{
     font-size: 0.9rem;
     text-align: center;
     margin-top: -10px;
+}
+
+section, article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100%;
 }

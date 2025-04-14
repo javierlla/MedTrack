@@ -7,6 +7,6 @@ article
     p(class="appointment-card__doctor-speciality")= "Speciality: " + appointment.doctor.speciality
     
     a(href=`/apppointment/${appointment.appointment_id}/edit`)
-        button Edit
+        button.button Edit
     form(action=`/appointment/${appointment.appointment_id}/delete`, method="post") 
-        button Delete
+        button.button Delete
