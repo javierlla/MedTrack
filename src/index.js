@@ -14,7 +14,7 @@ const APP_PORT = process.env.APP_PORT || 3000;
 /* app.use(cors()); */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('src/public'));
+app.use(express.static('public'));
 
 // Configurar motor de plantillas
 app.set('view engine', 'pug');
