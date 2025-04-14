@@ -6,9 +6,10 @@ import prescriptionsRouter from "./prescriptionsRouter.js";
 
 const router = Router();
 
-router.get("/",(req,res)=>{
-    res.send("hello world");
+router.get("/home",(req,res)=>{
+    res.render("userHome");
 })
+
 router.use("/doctor",doctorRouter);
 router.use("/",authRouter);
 router.use("/appointments",appointmentsRouter);
