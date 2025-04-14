@@ -1,10 +1,15 @@
 extends ../layout
 
 block content 
-    if user 
-        if role==="patient"
-            include patientCard
-        if role==="doctor"
-            include doctorCard
+    if role === "patient"
+        include patientCard
+    else if role === "doctor"
+        include doctorCard
+        h3 Patients for today:
+        ul
+            each appointment in appointments
+                li
+                    p= `Patient: ${appointment.patient.name} ${appointment.patient.surname}`
+                    p= `Date: ${appointment.date}`
     else 
         p There is no user for that id
