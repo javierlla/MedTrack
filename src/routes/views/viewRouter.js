@@ -11,6 +11,15 @@ router.get("/home", isAuthenticated, (req, res) => {
     res.render("userHome", { user: req.session.user });
 });
 
+router.get("/", (req, res) => {
+    if (req.session.user) {
+        return res.redirect("/home");
+    } else {
+        return res.redirect("/login");
+    }
+});
+
+
 
 router.use("/doctor",doctorRouter);
 router.use("/",authRouter);
