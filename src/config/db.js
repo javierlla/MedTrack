@@ -14,8 +14,18 @@ const connection = new Sequelize(
         define: {
             timestamps: false,
             freezeTableName: true
+        },
+        retry: {
+            max: 5, // Número máximo de reintentos
+            match: [
+                /ECONNREFUSED/,
+                /ETIMEDOUT/,
+                /EHOSTUNREACH/,
+                /SequelizeConnectionError/
+            ]
         }
     }
+    
 );
 
 // Probar la conexión
