@@ -61,6 +61,19 @@ function isDoctor(req, res, next) {
     return res.redirect("/login?error=You+are+not+a+doctor");
 }
 
+function isAuthenticated(req, res, next) {
+    if (req.session && req.session.user) {
+        // El usuario está logueado, continuamos
+        next();
+    } else {
+        // No está logueado, redirigimos a login
+        res.redirect('/login?error=Necesitas+iniciar+sesión');
+    }
+}
+
+export default isAuthenticated;
+
+
 export {
     isLoggedInSession,
     isLoggedInAPI,
