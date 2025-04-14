@@ -5,6 +5,8 @@
 
 ul li{
     list-style-type: none;
+    min-width: 300px;
+    text-align: center;
 }
 
 ul {
@@ -150,7 +152,7 @@ article {
     transition: background-color 0.3s;
     min-width: 300px;
 }
-.new-prescription {
+.new-prescription, .new-appointment {
     background-color: #4CAF50; 
     color: white;
     border: none;
@@ -167,11 +169,14 @@ article a button:hover {
     background-color: #45a049; 
 }
 
+footer {
+    border-top: 1px solid grey;
+}
 
 footer, header nav ul li a{
     color: rgb(235, 183, 88);
     /* background-color: rgb(22, 24, 19); */
-    padding: 10px;
+    /* padding: 10px; */
     text-align: center;         
     width: 100%;               
 }
@@ -335,7 +340,7 @@ section, article {
     min-width: 100%;
 }
 
-#appointment_id, #medication_id {
+#appointment_id, #medication_id, #speciality, #day, #hour {
     margin: 1%;
     padding: 1%;
 }

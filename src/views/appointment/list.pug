@@ -5,7 +5,8 @@ block content
     h1 Appointments 
     
     if role==="patient"
-        a(href="/appointments/create") New Appointment
+        section(class="new-appointment-section")
+            a(href="/appointments/create" class="new-appointment") New Appointment
 
     section(class="appointment-list")
         if appointments
