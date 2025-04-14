@@ -34,7 +34,7 @@ async function login(req, res) {
             role: loggedInUser.role
         };
 
-        res.redirect("/userHome");
+        res.redirect("/home");
     } catch (error) {
         console.error(error);
         if (error.statusCode) {

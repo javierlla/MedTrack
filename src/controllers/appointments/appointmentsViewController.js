@@ -6,8 +6,8 @@ async function getAll(req,res){
         const role = req.session.user?.role;
         const id = req.session.user?.user_id;
         const appointments = await appointmentsController.getAll(id,role);
-        res.json(appointments);
-        //res.render("appointment/list",{appointments, role});
+        //res.json(appointments);
+        res.render("appointment/list",{appointments, role});
     }catch (error) {
         console.error(error);
         res.render("layout", {error: "Internal Server Error"}); // vamos a la vista de layout y le mostramos el error
