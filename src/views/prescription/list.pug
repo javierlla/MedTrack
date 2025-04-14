@@ -4,13 +4,13 @@ block content
     h1 Prescriptions 
     
     if role==="doctor"
-        a(href="/prescription/create") New Prescription
+        a(href="/prescriptions/create") New Prescription
 
     section(class="prescription-list")
-        if prescriptions
-            each prescription in prescriptions
-                a(href=`/prescription/${prescription.prescription_id}`)
-                    include prescriptiontCard
+        if appointments 
+            each appointment  in appointments
+                a(href=`/prescriptions/${appointment.prescription_id}`)
+                    include prescriptionCard
         else 
             p There is no prescription available
         

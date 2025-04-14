@@ -7,13 +7,13 @@ import {  } from "../../utils/errors.js";
 
 //FUNCTION TO GET ENTIRE LIST
 async function getAll(id=null,role=null){
-    const filter = {include: [Patient,Doctor,Appointment,Medication]};
+    const filter = {include: [Patient,Doctor,{model: Prescription, include: Medication}]};
     if(role==="patient"){
         filter.where = {patient_id: id};
     }else if (role==="doctor"){
         filter.where = {doctor_id: id};
     }
-    const prescriptions = await Prescription.findAll(filter);
+    const prescriptions = await Appointment.findAll(filter);
     return prescriptions;
 }
 
@@ -24,16 +24,22 @@ async function getByID (id){
 }
 
 //FUNCTION TO CREATE A PRESCRIPTION
-async function create(data){
-    const result = await Prescription.create(
-        data,
-        {
-            where:{
-                prescription_id: id
-            }
-        }
+async function create(appointment_id, medication){
+    
+    const [prescription, created] = await Prescription.findOrCreate(
+        {where: {appointment_id: appointment_id},
+        defaults:{appointment_id: appointment_id}
+    }
     );
-    return result;
+
+    const hasRelation = await prescription.hasMedication(medication);
+    console.log("relation", hasRelation);
+    if (!hasRelation) {
+        await prescription.addMedication(medication);
+    }
+    //prescription.addMedication(medication);
+
+    return prescription;
 }
 
 //FUNCTION TO EDIT A PRESCRIPTION
@@ -54,7 +60,7 @@ async function edit(id,data){
 
 //FUNCTION TO REMOVE A PRESCIPTION
 async function remove(id){
-    const result = await Appointment.findByPk(id);
+    const result = await Prescription.findByPk(id);
     result.destroy();
 }
 

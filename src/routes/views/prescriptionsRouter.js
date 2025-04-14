@@ -4,15 +4,19 @@ import prescriptionsViewController from "../../controllers/prescriptions/prescri
 
 const router = Router();
 
-// conseguir todos los doctores
+// conseguir todas las recetas
 router.get("/",prescriptionsViewController.getAll)
 
-// conseguir doctor por id
-router.get("/:id",prescriptionsViewController.getByID)
+//crear una receta
+router.get("/create", prescriptionsViewController.createForm);
+router.post("/", prescriptionsViewController.create);
 
-// modificar un doctor
+// modificar una receta
 router.get("/:id/edit",prescriptionsViewController.editForm)
 router.post("/:id",prescriptionsViewController.edit)
+
+// conseguir receta por id
+router.get("/:id",prescriptionsViewController.getByID)
 
 
 export default router;
