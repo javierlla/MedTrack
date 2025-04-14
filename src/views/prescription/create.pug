@@ -1,15 +1,19 @@
 extends ../layout
 block content 
+    
     h1 New Prescription
-    form(action="/prescription", method="post") 
+
+    form(action="/prescriptions", method="post") 
+
+        label(for="appointment_id") Appointment 
+        select#appointment_id(name="appointment_id") 
+            each appointment in appointments 
+                option(value=appointment.appointment_id)= appointment.patient.name + " " + appointment.patient.surname
+
         
-        label(for="size") Size
-        select#size(name="size") 
-            option(value="small") Small
-            option(value="medium") Medium 
-            option(value="large") Large 
-        label(for="stand_category_id") Category 
-        select#stand_category_id(name="stand_category_id") 
-            each category in categories 
-                option(value=category.stand_category_id)= category.name
-        button Submit
+        label(for="medication_id") Medication 
+        select#medication_id(name="medication_id") 
+            each medication in medications 
+                option(value=medication.medication_id)= medication.name
+
+        button Create
