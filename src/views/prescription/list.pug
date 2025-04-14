@@ -10,7 +10,7 @@ block content
         if prescriptions
             each prescription in prescriptions
                 a(href=`/prescription/${prescription.prescription_id}`)
-                    include prescriptiontCard
+                    include prescriptionCard
         else 
             p There is no prescription available
         

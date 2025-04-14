@@ -7,7 +7,7 @@ async function getAll(req,res){
         const role = req.session.user?.role;
         const id = req.session.user?.user_id;
         const prescriptions = await prescriptionsController.getAll(id, role);
-    
+        //res.json(prescriptions);
         res.render("prescription/list",{prescriptions, role});
 
     }catch (error) {

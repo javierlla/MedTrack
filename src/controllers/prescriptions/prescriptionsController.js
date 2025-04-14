@@ -7,13 +7,13 @@ import {  } from "../../utils/errors.js";
 
 //FUNCTION TO GET ENTIRE LIST
 async function getAll(id=null,role=null){
-    const filter = {include: [Patient,Doctor,Appointment,Medication]};
+    const filter = {include: [Patient,Doctor,{model: Prescription, include: Medication}]};
     if(role==="patient"){
         filter.where = {patient_id: id};
     }else if (role==="doctor"){
         filter.where = {doctor_id: id};
     }
-    const prescriptions = await Prescription.findAll(filter);
+    const prescriptions = await Appointment.findAll(filter);
     return prescriptions;
 }
 

@@ -15,7 +15,7 @@ const Prescription = connection.define("prescriptions",{
     }
 })
 
-Prescription.belongsToMany(Medication,{through:"prescription_has_medication",foreignKey:"prescription_id"});
-Medication.belongsToMany(Prescription,{through:"prescription_has_medication",foreignKey:"medication_id"});
+Prescription.belongsToMany(Medication,{through:"medications_prescriptions",foreignKey:"prescription_id"});
+Medication.belongsToMany(Prescription,{through:"medications_prescriptions",foreignKey:"medication_id"});
 
 export default Prescription;
