@@ -38,6 +38,20 @@ async function getByID(req,res){
     
 }
 
+async function create(req, res) {
+    try {
+        const response = await prescriptionsController.create(req.body.appointment_id, req.body.medication);
+        res.json(response);
+    } catch (error) {
+        console.error(error);
+        if (error.statusCode) {
+            res.status(error.statusCode).json({ error: error.message });
+        } else {
+            res.status(500).json({ error: "Server error" });
+        }
+    }
+}
+
 async function edit(req, res){
     
     try {
@@ -64,5 +78,6 @@ async function edit(req, res){
 export default{
     getAll,
     getByID,
-    edit
+    create,
+    edit,
 };

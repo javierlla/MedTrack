@@ -7,6 +7,9 @@ const router = Router();
 // conseguir todos los doctores
 router.get("/",prescriptionsAPIController.getAll)
 
+// crear un stand
+router.post("/create",prescriptionsAPIController.create)
+
 // conseguir doctor por id
 router.get("/:id",prescriptionsAPIController.getByID)
 
