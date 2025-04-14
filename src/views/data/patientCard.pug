@@ -1,11 +1,11 @@
 article 
-    h2(class="patient-card")= ID: patient.patient_id
+    h2(class="patient-card")= patient.patient_id
     
-    p(class="patient-card__name")= patient.name
-    p(class="patient-card__surname")= patient.surname
-    p(class="patient-card__birthdate")= patient.birthdate
-    p(class="patient-card__ssn")= patient.ssn
-    p(class="patient-card__telephone")= patient.telephone
+    p(class="patient-card__name")="Name: " + patient.name
+    p(class="patient-card__surname")="Surname: " + patient.surname
+    p(class="patient-card__birthdate")="Birhdate: " + patient.birthdate
+    p(class="patient-card__ssn")="SSN: " + patient.ssn
+    p(class="patient-card__telephone")="Phone number: " + patient.telephone
     
     a(href=`/data/edit`)
         button Edit
