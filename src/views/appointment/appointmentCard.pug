@@ -1,12 +1,12 @@
 article 
-    h2(class="appointment-card")= appointment.id
+    h2(class="appointment-card")= appointment.appointment_id
     
     p(class="appointment-card__date")=appointment.date
-    p(class="appointment-card__patient")= Name: appointment.Patient.name Surname: appointment.Patient.surename
-    p(class="appointment-card__doctor")= Doctor: appointment.Doctor.name appointment.Doctor.surename
-    p(class="appointment-card__doctor-spaciallity")= Speciallity: appointment.Doctor.speciallity
+    p(class="appointment-card__patient")="Nombre: " + appointment.patient.name + " " + appointment.patient.surname
+    p(class="appointment-card__doctor")= "Doctor: " + appointment.doctor.name + " " + appointment.doctor.surname
+    p(class="appointment-card__doctor-speciality")= "Speciality: " + appointment.doctor.spaciality
     
-    a(href=`/apppointment/${appointment.id}/edit`)
+    a(href=`/apppointment/${appointment.appointment_id}/edit`)
         button Edit
-    form(action=`/appointment/${appointment.id}/delete`, method="post") 
+    form(action=`/appointment/${appointment.appointment_id}/delete`, method="post") 
         button Delete
