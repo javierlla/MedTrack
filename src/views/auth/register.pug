@@ -2,7 +2,7 @@ extends ../layout
 
 block content
     
-    form(action="/register", method="post") 
+    form.register-form(action="/register", method="post") 
         label(for="name") Name 
         input(type="text" name="name" id="name")
         label(for="surname") Surname 
