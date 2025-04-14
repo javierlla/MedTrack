@@ -17,10 +17,10 @@ async function getAll(req,res){
 
 //FUNCTION TO GET AVAILABILITY
 async function getAvailableAppointments(req,res){
-    const patient_id = req.session.patient_id
+    const patient_id = req.session.user.user_id;
     const result = {speciality: req.query.speciality,
                     day: req.query.day,
-                    hour: req.query.hour
+                    hour: req.query.hour,
                    };
     let appointments = await appointmentsController.getAvailableAppointments(result.speciality,result.day,result.hour);
 
@@ -32,8 +32,7 @@ async function getAvailableAppointments(req,res){
         res.render("appointment/create", {error: "That hour is already used",appointments});
     }else{
         console.log("cita libre");
-        const newDate = await appointmentsController.create(result.day,result.hour,result.speciality,patient_id);
-        res.send("Cita reservada");
+        const newAppointment = await appointmentsController.create(result.day,result.hour,result.speciality,patient_id);
         res.redirect("/appointments");
     }
 }
