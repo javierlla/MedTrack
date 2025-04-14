@@ -34,7 +34,7 @@ async function login(req, res) {
             role: loggedInUser.role
         };
 
-        res.redirect("/?message=Logged+in+successfully");
+        res.redirect("/userHome");
     } catch (error) {
         console.error(error);
         if (error.statusCode) {
@@ -47,7 +47,7 @@ async function login(req, res) {
 
 function logout(req, res) {
     req.session.user = undefined;
-    res.redirect("/");
+    res.redirect("/login");
 }
 
 export default {

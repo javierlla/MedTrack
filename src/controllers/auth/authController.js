@@ -32,11 +32,9 @@ async function register(userData) {
 
     const result = await User.create(userData);
 
-    if (userData.role === "patient") {
-        await Patient.create({ user_id: result.user_id });
-    } else if (userData.role === "doctor") {
-        await Doctor.create({ user_id: result.user_id });
-    }
+    await Patient.create({ user_id: result.user_id,
+        ...userData
+    });
 
     return result;
 }
