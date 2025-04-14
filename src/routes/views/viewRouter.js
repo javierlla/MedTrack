@@ -8,9 +8,17 @@ import isAuthenticated from "../../middleware/authMiddleware.js";
 
 const router = Router();
 
+
+
+router.use("/doctor",doctorRouter);
+router.use("/",authRouter);
+router.use("/appointments",appointmentsRouter);
+router.use("/prescriptions",prescriptionsRouter);
+
 router.get("/home", isAuthenticated, (req, res) => {
     res.render("userHome", { user: req.session.user });
 });
+
 
 router.get("/", (req, res) => {
     if (req.session.user) {
