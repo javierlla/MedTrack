@@ -40,16 +40,16 @@ async function getByID(id){
 }
 
 //FUNCTION TO CREATE AN APPOINTMENT
-async function create(day=null,hour=null,speciality=null,id){
+async function create(day=null,hour=null,speciality=null,patient_id){
     const doctor = await Doctor.findOne({ where: { speciality: speciality } });
-    const date = new Date(`${day}T${hour}`);
-    const patient_id = id;
+    const date = new Date(`${day} ${hour}:00`); 
 
     const result = await Appointment.create({
-        date,
-        doctor_id: doctor.doctor_id,
-        patient_id:patient_id
+        date: date,
+        patient_id: patient_id,
+        doctor_id: doctor.user_id
     });
+    console.log(result);
 
     return result;
 }
