@@ -4,7 +4,8 @@ block content
     h1 Prescriptions 
     
     if role==="doctor"
-        a(href="/prescriptions/create") New Prescription
+        section(class="new-prescription-section")
+            a(href="/prescriptions/create" class="new-prescription") New Prescription
 
     section(class="prescription-list")
         if appointments 

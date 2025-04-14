@@ -5,6 +5,8 @@
 
 ul li{
     list-style-type: none;
+    min-width: 300px;
+    text-align: center;
 }
 
 ul {
@@ -138,7 +140,19 @@ article {
 }
 
 
-.button, article a button {
+.button, article a button, button {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    min-width: 300px;
+}
+.new-prescription, .new-appointment {
     background-color: #4CAF50; 
     color: white;
     border: none;
@@ -155,17 +169,24 @@ article a button:hover {
     background-color: #45a049; 
 }
 
+footer {
+    border-top: 1px solid grey;
+}
+
+nav {
+    border-bottom: 1px solid gray;
+}
 
 footer, header nav ul li a{
     color: rgb(235, 183, 88);
     /* background-color: rgb(22, 24, 19); */
-    padding: 10px;
+    /* padding: 10px; */
     text-align: center;         
     width: 100%;               
 }
 header nav{
     color: rgb(235, 183, 88);
-    background-color: rgb(0, 0, 0);
+    /* background-color: rgb(0, 0, 0); */
     
 }
 
@@ -321,4 +342,9 @@ section, article {
     flex-direction: column;
     align-items: center;
     min-width: 100%;
+}
+
+#appointment_id, #medication_id, #speciality, #day, #hour {
+    margin: 1%;
+    padding: 1%;
 }
