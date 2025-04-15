@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `medtrack`.`patients` (
   `name` VARCHAR(45) NOT NULL,
   `surname` VARCHAR(45) NOT NULL,
   `birthdate` DATE NOT NULL,
-  `ssn` INT NOT NULL,
+  `ssn` VARCHAR(45) NOT NULL,
   `telephone` VARCHAR(45) NOT NULL,
   `user_id` INT UNSIGNED NOT NULL,
   INDEX `fk_patients_users1_idx` (`user_id` ASC) VISIBLE,
@@ -54,7 +54,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `medtrack`.`rooms` (
   `room_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `doctor_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`room_id`),
   UNIQUE INDEX `room_id_UNIQUE` (`room_id` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -67,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `medtrack`.`doctors` (
   `name` VARCHAR(45) NOT NULL,
   `surname` VARCHAR(45) NOT NULL,
   `speciality` VARCHAR(45) NOT NULL,
-  `telephone` INT NOT NULL,
+  `telephone` VARCHAR(45) NOT NULL,
   `user_id` INT UNSIGNED NOT NULL,
   `room_id` INT UNSIGNED NOT NULL,
   INDEX `fk_doctors_users1_idx` (`user_id` ASC) VISIBLE,

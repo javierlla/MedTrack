@@ -1,0 +1,350 @@
+:root{
+    font-size: 1.7rem;
+    color-scheme: light dark;
+}
+
+ul li{
+    list-style-type: none;
+    min-width: 300px;
+    text-align: center;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+ul li a {
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid #d4af37; /* Oro suave */
+    background-color: #f8f4e6; /* Beige amarillento muy claro */
+    padding: 20px;
+    margin: 10px 0;
+    min-height: 50px;
+    color: #5a4a3a; /* Marrón oscuro para texto */
+    text-decoration: none;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Animación de onda al hacer hover */
+ul li a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    animation: colorWave 1.5s ease-in-out infinite;
+}
+
+@keyframes colorWave {
+    0% {
+        border-color: #d4af37;
+    }
+    50% {
+        border-color: #f0d090;
+    }
+    100% {
+        border-color: #d4af37;
+    }
+}
+
+/* Efecto de brillo interior */
+ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+ul li a:hover::before {
+    left: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+nav ul li a{
+ /*    display: flex; */
+    padding: 10px;
+    margin: 5px;
+ /*    flex-direction: row; */
+    border: 0px solid rebeccapurple;
+
+    justify-content: space-around;
+
+}
+
+.navBar li a{
+    background-color: rgb(70, 70, 70);
+    transition: .5s ease-in-out ;
+}
+
+.navBar li a:hover{
+    transition: .5s ease-in-out ;
+    transform: scale(1.2);
+}
+
+body {
+    background-color: rgb(37, 31, 31);
+    min-height: 100vh;          
+    margin: 0;            
+    display: flex;        
+    flex-direction: column;
+    text-align: center;     
+}
+
+
+/* Estilo base para article y contenedores (ya definido) */
+form, ul, section, p, article {
+    background-color: rgb(37, 31, 31);
+    flex-grow: 1;
+}
+
+/* Estilos específicos para el article (tarjeta de paciente) */
+article {
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff; 
+    max-width: 600px; 
+}
+
+
+.patient-card {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50; 
+    border-bottom: 1px solid #555; 
+    padding-bottom: 0.5rem;
+}
+
+.patient-card__name,
+.patient-card__surname,
+.patient-card__birthdate,
+.patient-card__ssn,
+.patient-card__telephone {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+
+.button, article a button, button {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    min-width: 300px;
+}
+.new-prescription, .new-appointment {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    min-width: 300px;
+}
+
+article a button:hover {
+    background-color: #45a049; 
+}
+
+footer {
+    border-top: 1px solid grey;
+}
+
+nav {
+    border-bottom: 1px solid gray;
+}
+
+footer, header nav ul li a{
+    color: rgb(235, 183, 88);
+    /* background-color: rgb(22, 24, 19); */
+    /* padding: 10px; */
+    text-align: center;         
+    width: 100%;               
+}
+header nav{
+    color: rgb(235, 183, 88);
+    /* background-color: rgb(0, 0, 0); */
+    
+}
+
+h3 {
+    color: #fff;
+    margin: 1.5rem 0 0.5rem 0;
+    font-size: 1.2rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px dashed #555; 
+}
+
+
+
+ul li p{
+    background-color: rgba(255, 255, 255, 0.05);
+    color: bisque;
+    padding: 0.8rem;
+    margin: 0.3rem 0;
+    border-radius: 4px;
+    border-left: 3px solid #4CAF50;
+    transition: background-color 0.2s;
+}
+
+ 
+
+ 
+
+/* form, login */
+.register-form{
+    max-width: 600px;
+    margin: 0 auto; /* Centrar el formulario */
+    padding: 20px;
+    background-color: #222; /* Fondo oscuro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 15px; /* Espaciado entre los elementos */
+    min-width: 50%;
+}
+
+.register-form label {
+    grid-column: span 1; /* Cada etiqueta ocupa una columna */
+    color: #ebc556; /* Color del texto */
+    font-weight: bold;
+}
+
+.register-form input {
+    grid-column: span 1; /* Cada campo ocupa una columna */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto claro */
+}
+
+.register-form input:focus {
+    border-color: #ebc556; /* Color del borde al enfocar */
+    outline: none;
+}
+
+.register-form button {
+    grid-column: span 2;
+    padding: 10px;
+    background-color: #ebc556;
+    color: #222; 
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-form button:hover {
+    background-color: #d4a945;
+}
+
+/* Estilos mejorados para el formulario de inicio de sesión */
+.login {
+    max-width: 400px; /* Ajustar el ancho del formulario */
+    margin: 50px auto; /* Centrar el formulario horizontal y agregar espacio superior */
+    padding: 30px;
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a); /* Fondo con degradado */
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    display: grid;
+    grid-template-columns: 1fr; /* Una sola columna */
+    gap: 20px; /* Espaciado entre los elementos */
+}
+
+.login label {
+    color: #ebc556; /* Color del texto */
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.login input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444; /* Borde más oscuro */
+    border-radius: 8px;
+    background-color: #333; /* Fondo oscuro */
+    color: #fff; /* Texto claro */
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login input:focus {
+    border-color: #ebc556; /* Color del borde al enfocar */
+    box-shadow: 0 0 8px rgba(235, 197, 86, 0.8); /* Efecto de brillo */
+    outline: none;
+}
+
+.login button {
+    padding: 12px;
+    background: linear-gradient(145deg, #ebc556, #d4a945); /* Fondo con degradado */
+    color: #222; 
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.login button:hover {
+    background-color: #c9a03f; /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de zoom */
+}
+
+.login button:active {
+    transform: scale(0.95); /* Efecto de clic */
+}
+
+.login .error {
+    color: #ff6b6b; /* Color rojo para errores */
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -10px;
+}
+
+.login .message {
+    color: #4caf50; /* Color verde para mensajes */
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: -10px;
+}
+
+section, article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100%;
+}
+
+#appointment_id, #medication_id, #speciality, #day, #hour {
+    margin: 1%;
+    padding: 1%;
+}

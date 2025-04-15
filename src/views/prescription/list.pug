@@ -1,0 +1,17 @@
+extends ../layout
+
+block content 
+    h1 Prescriptions 
+    
+    if role==="doctor"
+        section(class="new-prescription-section")
+            a(href="/prescriptions/create" class="new-prescription") New Prescription
+
+    section(class="prescription-list")
+        if appointments 
+            each appointment  in appointments
+                a(href=`/prescriptions/${appointment.prescription_id}`)
+                    include prescriptionCard
+        else 
+            p There is no prescription available
+        

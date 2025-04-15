@@ -1,0 +1,14 @@
+header 
+    nav 
+        ul.navBar 
+            li 
+                a(href="/home") Home 
+            if !user
+                li
+                    a(href="/login") Login
+                li 
+                    a(href="/register") Register
+            else
+                li
+                    a(href="/logout") Logout
+
